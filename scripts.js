@@ -1,6 +1,4 @@
-
-const key = "1acabd08b904e2ac7978b23a2b8c16eb"
-
+require('dotenv').config()
 
 function dataOnTheScreen(data) {
     document.querySelector(".city").innerHTML = "Tempo em " + data.name
@@ -12,7 +10,7 @@ function dataOnTheScreen(data) {
 
 
 async function searchCity(city) {
-    const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&lang=pt_br&units=metric`).then(resposta => resposta.json())
+    const data = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.KEY}&lang=pt_br&units=metric`).then(resposta => resposta.json())
 
     dataOnTheScreen(data)
 }
